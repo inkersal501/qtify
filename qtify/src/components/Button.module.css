@@ -3,6 +3,7 @@
     color: var(--color-primary);
     border-radius: .5rem;
     font-weight: 600;
+    font-family: var(--font-family);
     border: none;
     padding: .8rem;
     cursor: pointer;
