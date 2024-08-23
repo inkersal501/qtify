@@ -1,14 +1,17 @@
-.card{ 
-    background-color: var(--color-black) !important;
+.Albumcard{
     width: 160px !important;
-    /* height: 205px; */
-    margin: 20px;
+    font-family: var(--font-family) !important;
+    margin: 15px;
+}
+.card{  
+    width: 160px !important;    
 }
 .cardImg{
     border-radius: 10px 10px 0px 0px;
     width: 160px;
-    height: 170px;
+    height: 100%;
     margin: 0px;
+    object-fit: cover;
 }
 .cardContent{ 
     height: 170px;
@@ -18,13 +21,17 @@
     background-color: var(--color-white) !important;
     justify-content: center;
     width: 160px;
-    padding: 4px 0;
+    padding: 6px 0;
 }
 .cardButton{
-    background-color: var(--color-black);
-    color: var(--color-white);
-    border-radius: 10px;
-    padding: 4px 8px;
+    background-color: var(--color-black) !important;
+    color: var(--color-white) !important;
     border: none;
     margin: 0 0 0 6px;
+    font-family: var(--font-family) !important;
+}
+.cardFooterText{
+    font-family: var(--font-family) !important;
+    color: var(--color-white) !important; 
+    margin: 4px 0 0 0px !important;
 }
