@@ -7,12 +7,13 @@ import AlbumSection from './components/AlbumSection';
 
 function App() {
 
-  const [albumsList, setalbumsList] = useState([{}]);
+  const [topalbumsList, settopalbumsList] = useState([{}]);
+  const [newalbumsList, setnewalbumsList] = useState([{}]);
   const [loadAlbum, setloadAlbum] = useState(false);
 
-  const getAlbums = async () =>{
+  const getAlbums = async (type) =>{
 
-    const apiUrl=`https://qtify-backend-labs.crio.do/albums/top`;
+    const apiUrl=`https://qtify-backend-labs.crio.do/albums/${type}`;
     const response = await axios.get(apiUrl)
     .then(response => {   
       return response.data;                     
@@ -20,13 +21,18 @@ function App() {
         if(error.response){           
           console.log('Something went wrong. Check that the backend is running, reachable and returns valid JSON.');
         }      
-    });
-    setalbumsList(response);
-    return response;
+    }); 
+    if(type=='top')
+      settopalbumsList(response); 
+    else
+      setnewalbumsList(response);
+
   }
   useEffect(() =>{
-    getAlbums(); 
-    setTimeout(() => {
+     
+    getAlbums("top"); 
+    getAlbums("new");
+    setTimeout(() => { 
       setloadAlbum(true);
     }, 500);
     
@@ -38,7 +44,8 @@ function App() {
     <>
       <Navbar />
       <Hero />
-      {loadAlbum && <AlbumSection albumsList={albumsList} albumTitle="Top Albums"/>}
+      {loadAlbum && <AlbumSection albumsList={topalbumsList} albumTitle="Top Albums"/>}
+      {loadAlbum && <AlbumSection albumsList={newalbumsList} albumTitle="New Albums"/>}
     </>
     
   );
