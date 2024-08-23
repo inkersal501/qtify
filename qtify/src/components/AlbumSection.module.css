@@ -2,3 +2,11 @@
     color: var(--color-white) !important;
     font-family: var(--font-family) !important;
 }
+.actionBtn{
+    color: var(--color-primary) !important;
+    border: none;
+    background-color: var(--color-black) !important;
+    font-family: var(--font-family) !important;
+    cursor: pointer;
+    font-size: 1rem;
+}
