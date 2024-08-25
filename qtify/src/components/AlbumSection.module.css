@@ -10,6 +10,10 @@
     cursor: pointer;
     font-size: 1rem;
 }
+.TabPanel{
+    padding: 0px;
+    margin: 0px;
+}
 .tab{
     font-family: var(--font-family) !important;
     color: var(--color-white) !important;

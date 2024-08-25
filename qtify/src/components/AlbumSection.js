@@ -35,7 +35,7 @@ function AlbumSection({albumsList, albumTitle, songsSection=false, chipText, gen
           
           {songsSection ? 
             
-              <TabContext value={activeTab}>
+              <TabContext value={activeTab}  sx={{padding:"0",margin:"0"}}>
                 <TabList onChange={handleTabChange} TabIndicatorProps={{ style: { display: 'none' } }}>
                   <Tab key="allTab" label="All" value="all" className={activeTab==="all"?styles.activeTab:styles.tab} /> 
                   {
@@ -45,10 +45,10 @@ function AlbumSection({albumsList, albumTitle, songsSection=false, chipText, gen
                   }
                 </TabList> 
     
-                <TabPanel key="allPanel" value="all"><Carousel albumsList={albumsList} chipText={chipText} tab="all" /></TabPanel>
+                <TabPanel className={styles.TabPanel} key="allPanel" value="all"><Carousel albumsList={albumsList} chipText={chipText} tab="all" /></TabPanel>
                 {
                   genresList.map(genre =>(
-                    <TabPanel key={genre.key+"Panel"} value={genre.key}>
+                    <TabPanel className={styles.TabPanel} key={genre.key+"Panel"} value={genre.key}>
                       <Carousel albumsList={albumsList} chipText={chipText} filter={true} filterKey={genre.key}/>
                     </TabPanel>
                   ))

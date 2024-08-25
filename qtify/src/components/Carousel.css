@@ -2,7 +2,7 @@
     content: "" !important;
 }
 .swiper-button-prev{
-    left: 1px;
+    left: 0px;
     background-image: url("../assets/left-arrow.png");
     background-repeat: no-repeat;
     background-size: contain;
@@ -12,7 +12,7 @@
     content: "" !important;
 }
 .swiper-button-next{
-    right: 15px;
+    right: 10px;
     background-image: url("../assets/right-arrow.png");
     background-repeat: no-repeat;
     background-size: contain;
