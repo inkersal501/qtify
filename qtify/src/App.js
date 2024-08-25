@@ -1,15 +1,14 @@
 import React, {useState, useEffect} from 'react';
 import Navbar from './components/Navbar';  
 import Hero from './components/Hero';
-
 import axios from 'axios';
-import AlbumSection from './components/AlbumSection';
+import AlbumSection from './components/AlbumSection'; 
 
 function App() {
 
   const [topalbumsList, settopalbumsList] = useState([{}]);
   const [newalbumsList, setnewalbumsList] = useState([{}]);
-  const [loadAlbum, setloadAlbum] = useState(false);
+  const [loadAlbum, setloadAlbum] = useState(false); 
 
   const getAlbums = async (type) =>{
 
@@ -22,7 +21,7 @@ function App() {
           console.log('Something went wrong. Check that the backend is running, reachable and returns valid JSON.');
         }      
     }); 
-    if(type=='top')
+    if(type==='top')
       settopalbumsList(response); 
     else
       setnewalbumsList(response);
@@ -44,8 +43,11 @@ function App() {
     <>
       <Navbar />
       <Hero />
-      {loadAlbum && <AlbumSection albumsList={topalbumsList} albumTitle="Top Albums"/>}
+      
+
+      {loadAlbum && <AlbumSection albumsList={topalbumsList} albumTitle="Top Albums"/>}    
       {loadAlbum && <AlbumSection albumsList={newalbumsList} albumTitle="New Albums"/>}
+ 
     </>
     
   );

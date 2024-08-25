@@ -1,0 +1,20 @@
+.swiper-button-prev:after, .swiper-rtl .swiper-button-next:after{
+    content: "" !important;
+}
+.swiper-button-prev{
+    left: 1px;
+    background-image: url("../assets/left-arrow.png");
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+.swiper-button-next:after, .swiper-rtl .swiper-button-prev:after{
+    content: "" !important;
+}
+.swiper-button-next{
+    right: 15px;
+    background-image: url("../assets/right-arrow.png");
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+ 
