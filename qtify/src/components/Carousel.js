@@ -7,8 +7,8 @@ import 'swiper/css/navigation';
 import './Carousel.css';
 import Albumcard from './Albumcard'; 
 
-function Carousel({albumsList}) {
- 
+function Carousel({albumsList, chipText}) {
+
   return ( 
     <Box sx={{padding:"0 15px"}}>
         <Swiper 
@@ -24,7 +24,7 @@ function Carousel({albumsList}) {
         albumsList.map(album =>(
 
         <SwiperSlide key={album.id}>
-            <Albumcard album={album}/>
+            <Albumcard album={album} chipText={chipText}/>
         </SwiperSlide>   
 
         ))

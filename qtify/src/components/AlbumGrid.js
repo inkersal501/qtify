@@ -2,8 +2,8 @@ import React from 'react';
 import { Grid } from '@mui/material';  
 import Albumcard from './Albumcard'; 
 
-function AlbumGrid({albumsList}) {
- 
+function AlbumGrid({albumsList, chipText}) {
+  console.log(chipText);
   return ( 
   
         <Grid container spacing={2} sx={{marginLeft:"0px"}}>
@@ -11,7 +11,7 @@ function AlbumGrid({albumsList}) {
             albumsList.map(album =>(
 
             <Grid item key={album.id}>
-              <Albumcard album={album}/>
+              <Albumcard album={album} chipText={chipText}/>
             </Grid>   
 
             ))

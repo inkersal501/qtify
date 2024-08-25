@@ -2,7 +2,8 @@ import React from 'react';
 import {Box, Chip, Typography  } from '@mui/material';  
 import styles from './Card.module.css';
 
-function Albumcard({album}) {
+function Albumcard({album, chipText}) { 
+ 
   return ( 
  
       <Box sx={{display:"flex",flexDirection:"column",gap:"0"}} className={styles.Albumcard}>
@@ -15,7 +16,7 @@ function Albumcard({album}) {
                 ></img>
           </Box>
           <Box className={styles.cardActions}>
-            <Chip label={album.follows+" follows"} className={styles.cardButton}/> 
+            <Chip label={album[chipText]+" "+chipText} className={styles.cardButton}/> 
           </Box>
         </Box>
         <Typography className={styles.cardFooterText} variant='p'>{album.title}</Typography>

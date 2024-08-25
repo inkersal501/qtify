@@ -8,11 +8,19 @@ function App() {
 
   const [topalbumsList, settopalbumsList] = useState([{}]);
   const [newalbumsList, setnewalbumsList] = useState([{}]);
+  const [songsList, setsongsList] = useState([{}]);
   const [loadAlbum, setloadAlbum] = useState(false); 
 
   const getAlbums = async (type) =>{
 
-    const apiUrl=`https://qtify-backend-labs.crio.do/albums/${type}`;
+    let apiUrl=`https://qtify-backend-labs.crio.do/albums/${type}`;
+    if(type==='top')
+      apiUrl = 'https://qtify-backend-labs.crio.do/albums/top'; 
+    else if(type==='new')
+      apiUrl = 'https://qtify-backend-labs.crio.do/albums/new'; 
+    else if(type==='songs')
+      apiUrl = 'https://qtify-backend-labs.crio.do/songs'; 
+
     const response = await axios.get(apiUrl)
     .then(response => {   
       return response.data;                     
@@ -20,17 +28,21 @@ function App() {
         if(error.response){           
           console.log('Something went wrong. Check that the backend is running, reachable and returns valid JSON.');
         }      
-    }); 
+    });  
+    
     if(type==='top')
       settopalbumsList(response); 
-    else
+    else if(type==='new')
       setnewalbumsList(response);
+    else if(type==='songs')
+      setsongsList(response);
 
   }
   useEffect(() =>{
      
     getAlbums("top"); 
     getAlbums("new");
+    getAlbums("songs");
     setTimeout(() => { 
       setloadAlbum(true);
     }, 500);
@@ -45,8 +57,9 @@ function App() {
       <Hero />
       
 
-      {loadAlbum && <AlbumSection albumsList={topalbumsList} albumTitle="Top Albums"/>}    
-      {loadAlbum && <AlbumSection albumsList={newalbumsList} albumTitle="New Albums"/>}
+      {loadAlbum && <AlbumSection albumsList={topalbumsList} albumTitle="Top Albums" chipText="follows"/>}    
+      {loadAlbum && <AlbumSection albumsList={newalbumsList} albumTitle="New Albums" chipText="follows"/>}
+      {loadAlbum && <AlbumSection albumsList={songsList} albumTitle="Songs" songsSection={true} chipText="likes"/>}
  
     </>
     
