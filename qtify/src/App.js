@@ -9,6 +9,7 @@ function App() {
   const [topalbumsList, settopalbumsList] = useState([{}]);
   const [newalbumsList, setnewalbumsList] = useState([{}]);
   const [songsList, setsongsList] = useState([{}]);
+  const [Genres, setGenres] = useState([{}]);
   const [loadAlbum, setloadAlbum] = useState(false); 
 
   const getAlbums = async (type) =>{
@@ -38,15 +39,29 @@ function App() {
       setsongsList(response);
 
   }
+
+  const getGenres = async () =>{
+
+    const response = await axios.get(`https://qtify-backend-labs.crio.do/genres`)
+    .then(response => {   
+      return response.data;                     
+    }).catch (error => {     
+      if(error.response){           
+        console.log('Something went wrong. Check that the backend is running, reachable and returns valid JSON.');
+      }      
+    });   
+    setGenres(response.data);  
+  }
+
   useEffect(() =>{
      
     getAlbums("top"); 
     getAlbums("new");
-    getAlbums("songs");
+    getGenres();   
+    getAlbums("songs");    
     setTimeout(() => { 
       setloadAlbum(true);
-    }, 500);
-    
+    }, 500); 
   // eslint-disable-next-line react-hooks/exhaustive-deps
   },[])
 
@@ -57,9 +72,9 @@ function App() {
       <Hero />
       
 
-      {loadAlbum && <AlbumSection albumsList={topalbumsList} albumTitle="Top Albums" chipText="follows"/>}    
-      {loadAlbum && <AlbumSection albumsList={newalbumsList} albumTitle="New Albums" chipText="follows"/>}
-      {loadAlbum && <AlbumSection albumsList={songsList} albumTitle="Songs" songsSection={true} chipText="likes"/>}
+      {loadAlbum && <AlbumSection albumsList={topalbumsList} albumTitle="Top Albums" songsSection={false} chipText="follows"/>}    
+      {loadAlbum && <AlbumSection albumsList={newalbumsList} albumTitle="New Albums" songsSection={false} chipText="follows"/>}
+      {loadAlbum && <AlbumSection albumsList={songsList} albumTitle="Songs" songsSection={true} chipText="likes" genresList={Genres}/>}
  
     </>
     

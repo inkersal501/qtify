@@ -7,18 +7,22 @@ import 'swiper/css/navigation';
 import './Carousel.css';
 import Albumcard from './Albumcard'; 
 
-function Carousel({albumsList, chipText}) {
+function Carousel({albumsList, chipText, filter, filterKey}) {
+
+  if(filter && filterKey!=='all'){
+    albumsList= albumsList.filter(album => {
+      return (album.genre.key===filterKey);
+    })
+  }
 
   return ( 
     <Box sx={{padding:"0 15px"}}>
         <Swiper 
-        spaceBetween={0}
-        slidesPerView={7}
-        navigation={true}
-        modules={[Navigation]}
-         className="mySwiper"
-        //onSlideChange={() => /*console.log('slide change')*/ }
-        //onSwiper={(swiper) =>  /*console.log(swiper)*/}
+          spaceBetween={0}
+          slidesPerView={7}
+          navigation={true}
+          modules={[Navigation]}
+          className="mySwiper" 
         >
         {
         albumsList.map(album =>(
