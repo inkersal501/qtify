@@ -16,7 +16,7 @@ function Carousel({albumsList, chipText, filter, filterKey}) {
   }
 
   return ( 
-    <Box sx={{padding:"0 15px"}}>
+    <Box sx={{ padding: filter?"0 15px":"0px"}}>
         <Swiper 
           spaceBetween={0}
           slidesPerView={7}

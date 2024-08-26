@@ -11,17 +11,19 @@
     font-size: 1rem;
 }
 .TabPanel{
-    padding: 0px;
+    padding: 10px 0px !important;
     margin: 0px;
 }
 .tab{
     font-family: var(--font-family) !important;
     color: var(--color-white) !important;
+    padding: 0px !important;
 }
 .activeTab{
     font-family: var(--font-family) !important;
     color: var(--color-white) !important;
     border-bottom: 3px solid var(--color-primary) !important;
+    padding: 0px !important;
 }
  
  

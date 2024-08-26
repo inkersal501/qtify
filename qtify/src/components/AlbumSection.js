@@ -35,7 +35,7 @@ function AlbumSection({albumsList, albumTitle, songsSection=false, chipText, gen
           
           {songsSection ? 
             
-              <TabContext value={activeTab}  sx={{padding:"0",margin:"0"}}>
+              <TabContext value={activeTab}  sx={{padding:"0px !imoprtant",margin:"0"}}>
                 <TabList onChange={handleTabChange} TabIndicatorProps={{ style: { display: 'none' } }}>
                   <Tab key="allTab" label="All" value="all" className={activeTab==="all"?styles.activeTab:styles.tab} /> 
                   {
